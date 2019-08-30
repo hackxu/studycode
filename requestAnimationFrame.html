@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .boll {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    // function sleep(ms) {
+    //   return new Promise(function (resolve, refect) {
+    //     setTimeout(resolve, ms)
+    //   })
+    // }
+    function sleep(delay) {
+      var start = (new Date()).getTime();
+      while ((new Date()).getTime() - start < delay) {
+        continue;
+      }
+    }
+
+    function createBoll() {
+      // sleep(30)
+      // sleep(30)
+      const boll = document.createElement('div')
+      boll.classList.add("boll")
+      boll.style.background = "black"
+      document.body.append(boll)
+    }
+
+    const COUNT = 100;
+
+    // 直接执行大任务
+    function longTask() {
+      requestAnimationFrame(() => {
+        for (i = 0; i < COUNT; i++) {
+          createBoll()
+        }
+      })
+    }
+
+    function chunkTask() {
+      let i = 0
+      requestAnimationFrame(function doOne() {
+        // 每一帧，只创建一个小球
+        createBoll()
+        i++
+        if (i < COUNT) {
+          requestAnimationFrame(doOne)
+        }
+      })
+    }
+    chunkTask()
+    optimizeReflow()
+    function reflow() {
+      requestAnimationFrame(() => {
+        boll.style.top = boll.offsetTop
+      })
+    }
+
+
+    function optimizeReflow() {
+      requestAnimationFrame(() => {
+        const top = boll.offsetTop
+        const bodyHeight = document.documentElement.offsetHeight
+        if (top >= bodyHeight) {
+          return
+        }
+        boll.style.top = top + 2 + "px"
+        optimizeReflow()
+      })
+    }
+    // longTask()
+  </script>
+</body>
+
+</html>

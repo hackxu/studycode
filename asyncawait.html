@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" id="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <title>async/await</title>
+    <style>
+        .border_bottom {
+            overflow: hidden;
+            position: relative;
+            border: none !important;
+        }
+
+        .border_bottom:after {
+            content: ".";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+        }
+    </style>
+</head>
+
+<div class="border_bottom"></div>
+
+<body>
+    <script>
+        function resolve(params) {
+            console.log("开始了");
+
+        }
+        async function f1(resolve) {
+            await Promise.all([
+                new Promise((resolve) => {
+                    setTimeout(resolve, 600)
+                }),
+                new Promise((resolve) => {
+                    setTimeout(resolve, 600)
+                })
+            ])
+        }
+
+        async function f2() {
+            let fn1 = new Promise((resolve) => {
+                setTimeout(resolve, 800)
+            })
+            let fn2 = new Promise((resolve) => {
+                setTimeout(resolve, 800)
+            })
+            await fn1;
+            await fn2;
+        }
+
+        f1()
+    </script>
+</body>
+
+</html>

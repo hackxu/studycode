@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <title>ctm</title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <!--<script src="js/lottie.js"></script>-->
+    <style>
+        #lottie {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="lottie"></div>-->
+<div class="lottie"></div>
+<!--<div class="lottie"></div>-->
+<!--<div class="lottie"></div>-->
+<!--<div class="lottie"></div>-->
+<!--<div class="lottie"></div>-->
+<!--<div class="lottie"></div>-->
+<!--<div class="lottie"></div>-->
+<!--<div style="width:1067px;height:600px" class="lottie" data-animation-path="http://www.tobetibetan.com/CZX_files/"-->
+     <!--data-anim-loop="true" data-name="589256d4-ddff-46a6-9552-410223d64a41.json"></div>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.4.2/lottie_light.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.4.2/lottie.min.js"></script>
+<!--<div style="width:1067px;height:600px" class="lottie" data-animation-path="animation/" data-anim-loop="true"-->
+<!--data-name="test"></div>-->
+
+<script>
+    $(function () {
+        var lot = document.getElementsByClassName('lottie')[0]
+        console.log(lot)
+        var reader = new FileReader()
+        reader.addEventListener("load",function (e) {
+            console.log(e)
+            console.log(reader)
+        })
+        lottie.loadAnimation({
+            container: lot, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'http://www.tobetibetan.com/CZX_files/5ae71cfa-a8b6-423b-b385-a0b816e29329.json' // the path to the animation json
+        });
+        // lottie.loadAnimation({
+        //     container: lot, // the dom element that will contain the animation
+        //     renderer: 'svg',
+        //     loop: true,
+        //     autoplay: true,
+        //     path: 'http://www.tobetibetan.com/CZX_files/589256d4-ddff-46a6-9552-410223d64a41.json' // the path to the animation json
+        // });
+        // lottie.loadAnimation({
+        //     container: lot, // the dom element that will contain the animation
+        //     renderer: 'svg',
+        //     loop: true,
+        //     autoplay: true,
+        //     path: 'http://www.tobetibetan.com/CZX_files/5ae71cfa-a8b6-423b-b385-a0b816e29329.json' // the path to the animation json
+        // });
+        // lottie.loadAnimation({
+        //     container: lot, // the dom element that will contain the animation
+        //     renderer: 'svg',
+        //     loop: true,
+        //     autoplay: true,
+        //     path: 'http://www.tobetibetan.com/CZX_files/589256d4-ddff-46a6-9552-410223d64a41.json' // the path to the animation json
+        // });
+    })
+</script>
+</body>
+</html>

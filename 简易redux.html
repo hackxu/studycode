@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" id="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <title></title>
+</head>
+
+<body>
+<script>
+  // 获取电量
+  navigator.getBattery().then(battery => console.log(battery));
+
+    const createStore = function (reducer, initState, rewriteCreateStoreFunc) {
+        if (typeof initState === "function") {
+            rewriteCreateStoreFunc = initState;
+            initState = undefined
+        }
+        if (rewriteCreateStoreFunc) {
+            const newCreateStore = rewriteCreateStoreFunc(createStore)
+            return newCreateStore(reducer, initState)
+        }
+        let state = initState;
+        let listeners = [];
+
+        function replaceReducer(nextReducer) {
+            reducer = nextReducer;
+            dispatch({type: Symbol})
+        }
+        function subscribe(listener) {
+            listeners.push(listener)
+            return function unsubscribe() {
+                const index = listeners.indexOf(listener)
+                listeners.splice(index, 1)
+            }
+        }
+
+        function dispatch(action) {
+            // state = newState;
+            state = reducer(state, action);
+            for (let i = 0; i < listeners.length; i++) {
+                const listener = listeners[i];
+                listener()
+            }
+        }
+
+
+
+        function getState() {
+            return state
+        }
+
+        dispatch({type: Symbol()})
+
+
+        return {
+            subscribe,
+            dispatch,
+            getState,
+            replaceReducer
+        }
+    }
+
+    function counterReducer(state, action) {
+        if (!state) {
+            state = initState
+        }
+        switch (action.type) {
+            case "INCREMENT":
+                return {
+                    ...state,
+                    count: state.count + 1
+                }
+            case 'DECREMENT':
+                return {
+                    ...state,
+                    count: state.count - 1
+                }
+            default:
+                return state
+        }
+    }
+
+    function InfoReducer(state, action) {
+        if (!state) {
+            state = initState
+        }
+        switch (action.type) {
+            case "SET_NAME":
+                return {
+                    ...state,
+                    name: action.name
+                }
+            case 'SET_DESCRIPTION':
+                return {
+                    ...state,
+                    description: action.description
+                }
+            default:
+                return state
+        }
+    }
+
+    function combineReducers(reducers) {
+        const reducerKeys = Object.keys(reducers)
+        console.log(reducerKeys)
+
+        return function combination(state = {}, action) {
+            console.log(state)
+            console.log(action)
+            const nextState = {}
+            for (let i = 0; i < reducerKeys.length; i++) {
+                const key = reducerKeys[i]
+                const reducer = reducers[key]
+
+                const previousStateForKey = state[key]
+
+                nextState[key] = reducer(previousStateForKey, action)
+            }
+
+            return nextState
+        }
+    }
+
+    let initState = {
+        // counter: {
+        count: 0
+        // },
+        // info: {
+        //     name: "1",
+        //     description: "222"
+        // }
+    }
+
+    // 提取loggerMiddleware
+    const loggerMiddleware = (store) => (next) => (action) => {
+        console.log('this state', store.getState());
+        console.log('action', action);
+        next(action);
+        console.log('next state', store.getState());
+    }
+
+    // 提取exceptionMiddleware
+    const exceptionMiddleware = (store) => (next) => (action) => {
+        try {
+            next(action)
+        } catch (err) {
+            console.error('错误报告: ', err)
+        }
+    }
+
+    const timeMiddleware = (store) => (next) => (action) => {
+        console.log('time', new Date().getTime())
+        next(action)
+    }
+
+    const applyMiddleware = function (...middewares) {
+        return function rewiteCreateStoreFunc(oldCreateStore) {
+            return function newCreateStore(reducer, initState) {
+                const store = oldCreateStore(reducer, initState)
+                console.log(middewares)
+                const simpleStore = {getState: store.getState}
+                const chain = middewares.map(middeware => middeware(simpleStore))
+                console.log(chain)
+                let dispatch = store.dispatch;
+                chain.reverse().map(middeware => {
+                    console.log(middeware)
+                    dispatch = middeware(dispatch)
+                })
+
+                store.dispatch = dispatch;
+                return store
+            }
+        }
+    }
+
+    const rewriteCreateStoreFunc = applyMiddleware(exceptionMiddleware, timeMiddleware, loggerMiddleware)
+
+    // let store = createStore(counterReducer, initState, rewriteCreateStoreFunc)
+    // const next = store.dispatch;
+
+    //
+    // const time = timeMiddleware(store)
+    // const logger = loggerMiddleware(store)
+    // const exception = exceptionMiddleware(store)
+    // store.dispatch = exception(time(logger(next)))
+
+    // store.dispatch = exceptionMiddleware(loggerMiddleware(next))
+
+    const reducer = combineReducers({
+        counter:counterReducer
+    })
+    const store = createStore(reducer)
+
+    const nextReducer = combineReducers({
+        counter:counterReducer,
+        info:InfoReducer
+    })
+    console.log(store)
+    store.replaceReducer(nextReducer)
+
+    store.dispatch({
+        type: "INCREMENT"
+    })
+    // console.dir(store.getState())
+
+    // let store = createStore(reducer, initState);
+    //
+    // store.subscribe(() => {
+    //     let state = store.getState();
+    //     console.log(state.counter.count, state.info.name, state.info.description);
+    // });
+    // /*自增*/
+    // store.dispatch({
+    //     type: 'INCREMENT'
+    // });
+    //
+    // /*修改 name*/
+    // store.dispatch({
+    //     type: 'SET_NAME',
+    //     name: '前端九部2号'
+    // });
+    // let store = createStore(initState)
+    // store.subscribe(() => {
+    //     let state = store.getState()
+    //     console.log(`${state.info.name}:${state.info.description}`)
+    // })
+    //
+    // store.subscribe(() => {
+    //     let state = store.getState()
+    //     console.log(state.counter.count)
+    // })
+    //
+    // store.dispatch({
+    //     ...store.getState(),
+    //     info: {
+    //         name: "前前前",
+    //         description: "端端端"
+    //     }
+    // })
+    //
+    // store.dispatch({
+    //     ...store.getState(),
+    //     count: 1
+    // })
+
+</script>
+</body>
+
+</html>

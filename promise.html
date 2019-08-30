@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    class Promise {
+
+        constructor(executor) {
+            this.status = 'pendding'
+            this.value = undefined
+            this.reason = undefined
+
+            this.onResolvedCallbacks = []
+
+            this._onRejectedCallbacks = []
+
+            let resolve = (data) => {
+                if (this.status === 'pendding') {
+                    this.status = 'resolve'
+                    this.value = data
+
+                    this.onResolvedCallbacks.forEach(fn => fn())
+                }
+            }
+
+            let reject = (data) => {
+                if (this.status === 'pendding') {
+                    this.status = 'reject'
+                    this.reason = data
+
+                    this._onRejectedCallbacks.forEach(fn => fn())
+                }
+            }
+
+            try {
+                executor(resolve, reject)
+            } catch (e) {
+                reject(e)
+            }
+        }
+    }
+</script>
+</body>
+</html>

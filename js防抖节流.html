@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js防抖节流</title>
+</head>
+
+<body>
+    <input type="text" id="debounce">
+    <script>
+        function ajax(content) {
+            console.log('ajax request ' + content)
+        }
+        // 防抖
+        function debounce(fun, delay) {
+            return function (args) {
+                let that = this;
+                let _args = args;
+                clearTimeout(fun.id)
+                fun.id = setTimeout(function () {
+                    fun.call(that, _args)
+                }, delay)
+            }
+        }
+        // 节流
+        function throttle(fun, deplay) {
+            let last, deferTimer;
+            return function (args) {
+                let that = this;
+                let _args = arguments;
+                let now = +new Date();
+                if (last && now < last + delay) {
+                    clearTimeout(deferTimer)
+                    deferTimer = setTimeout(function () {
+                        last = now;
+                        fun.apply(that, _args)
+                    }, deplay)
+                } else {
+                    last = now
+                    fun.apply(that, _args)
+                }
+            }
+        }
+        let inputb = document.getElementById('debounce')
+        let debounceAjax = debounce(ajax, 500)
+        inputb.addEventListener('keyup', function (e) {
+            debounceAjax(e.target.value)
+        })
+
+        //二者合并为更好的throttle函数
+        function throttle(fn, wait) {
+            let previous, timer = null;
+
+            return function (...args) {
+                let now = +new Date()
+
+                if (now - previous < wait) {
+                    if (timer) clearTimeout(timer)
+
+                    timer = setTimeout(() => {
+                        previous = now;
+                        fn.apply(this, args)
+                    }, wait)
+                } else {
+                    previous = now;
+                    fn.apply(this, args)
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

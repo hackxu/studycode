@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <title>分页</title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        #target {
+            white-space: pre-wrap;
+        }
+        .individualPage {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="target">alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在 Fiber
+    架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的 Fiber
+    是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。alternate 属性我想拿出来单独说一下，这个属性是 Fiber 架构新加入的属性。我们都知道，VDOM 算法是在更新的时候生成一颗新的 VDOM 树，去和旧的进行对比。在
+    Fiber 架构中，当我们调用 ReactDOM.render 或者 setState 之后，会生成一颗树叫做：work-in-progress tree，这一颗树就是我们所谓的新树用来与我们的旧树进行对比，新的树和旧的树的
+    Fiber 是完全不一样的，此时，我们就需要 alternate 属性去链接新树和旧树。 司徒正美的研究中，一个 Fiber 和它的 alternate 属性构成了一个联婴体，他们有共同的 tag ，type，stateNode
+    属性，这些属性在错误边界自爆时，用于恢复当前节点。
+</div>
+<script>
+    var contentBox = $('#target')
+    var words = contentBox.text().split(" ")
+
+    function paginate() {
+        var newPage = $("<div class='individualPage'></div>")
+        contentBox.empty().append(newPage)
+        var pageText = null;
+        for (var i = 0; i < words.length; i++) {
+            var betterPageText = pageText ? pageText + " " + words[i] : words[i]
+            newPage.text(betterPageText)
+
+            if (newPage.height() > $(window).height()) {
+                newPage.text(pageText)
+                newPage.clone().insertBefore(newPage)
+                pageText = null
+            } else {
+                pageText = betterPageText
+            }
+        }
+    }
+
+    $(window).resize(paginate).resize()
+</script>
+</body>
+</html>

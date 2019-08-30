@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="parent">
+    <li class="good">乖小孩</li>
+    <li class="bad">壞小孩</li>
+    <li class="good">乖小孩</li>
+
+</div>
+<script>
+    var parent = document.querySelector(".parent")
+    var sp = parent.getElementsByTagName('li');
+    console.log(sp)
+    for (var i = 0; i < sp.length; i++) {
+        if (i > sp.length - 1) {
+
+        } else {
+            console.log(sp[i])
+            parent.removeChild(sp[i])
+        }
+        // parent.removeChild(parent.querySelector('.bad'));
+    }
+</script>
+</body>
+</html>

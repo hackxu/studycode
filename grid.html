@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" id="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <title>grid布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr minmax(100px,1fr);
+            grid-template-rows: 50px;
+        }
+   
+
+        .grid1 {
+            background: #ef342a
+        }
+        .grid2 {
+            background: #f68f26
+        }
+        .grid3 {
+            background: #4ba946
+        }
+        .grid4 {
+            background: #0376c2
+        }
+        .grid5 {
+            background: #c077af
+        }
+        .grid6 {
+            background: #f8d29d
+        }
+        .grid7 {
+            background: #b5a87f
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid">
+        <div class='grid1'>1</div>
+        <div class='grid2'>1</div>
+        <div class='grid3'>1</div>
+        <div class='grid4'>1</div>
+        <div class='grid5'>1</div>
+        <div class='grid6'>1</div>
+        <div class='grid7'>1</div>
+   
+    </div>
+</body>
+
+</html>

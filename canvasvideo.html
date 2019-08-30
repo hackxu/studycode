@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        video {
+            width: 400px;
+            height: 200px;
+            object-fit: fill;
+        }
+        .play-pause {
+            display: inline-block;
+            background-color: #ff0081;
+            color: #fff;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 10px 20px;
+            box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+        }
+        .grayscale-btn {
+            display: inline-block;
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            color: #fff;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 10px 20px;
+            margin-left: 20px;
+            box-shadow: 0 2px 25px rgba(22, 217, 227, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="canvas"></canvas>
+<video src="video/123.mp4" controls="controls"></video>
+
+<div>
+    <button class="play-pause">播放</button>
+    <button class="grayscale-btn">灰度</button>
+</div>
+
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    canvas.width = 400;
+    canvas.height = 200;
+
+    var video = document.querySelector('video');
+    var playPause = document.querySelector('.play-pause');
+    var grayscaleBtn = document.querySelector('.grayscale-btn');
+
+    // 保存调用window.requestAnimationFrame()方法时返回的ID.
+    // 用来停止视频灰度效果
+    var requestID;
+
+    // isGray 用来判断是否需要把视频转为灰度
+    var isGray = false;
+
+    // 视频已准备好时，先在canvas上画一帧，并给两个按钮绑定事件
+    video.oncanplay = function () {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        playPause.onclick = function () {
+            if (video.paused) {       //当前视频暂停
+                video.play();
+                this.innerHTML = '暂停';
+                // 实现视频灰度效果
+                requestID = window.requestAnimationFrame(draw);
+            } else {
+                video.pause();
+                this.innerHTML = '播放';
+                // 暂停时 也停止视频灰度效果
+                window.cancelAnimationFrame(requestID);
+            }
+        }
+
+        grayscaleBtn.onclick = function () {
+            if (this.innerHTML == '灰度') {
+                this.innerHTML = '恢复';
+                isGray = true;
+            } else {
+                this.innerHTML = '灰度';
+                isGray = false;
+            }
+        }
+    }
+
+    function draw() {
+        //绘图
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        //获取画面像素信息，得到一个每个像素点的rgba值得数组，需要运行在服务端
+        var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var data = imgData.data;
+
+        // isGray 为 true 时，把视频转为灰度
+        if (isGray) {
+            // 求每个像素的红色值、绿色值 和 蓝色值，相加求出平均值，再把平均值赋值给红色、绿色和蓝色
+            for (var i = 0; i < data.length; i += 4) {
+                var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                data[i] = avg; // red
+                data[i + 1] = avg; // green
+                data[i + 2] = avg; // blue
+            }
+            // 把改变后的像素再添加到 canvas中
+            ctx.putImageData(imgData, 0, 0);
+        }
+        console.log(imgData);
+        requestID = window.requestAnimationFrame(draw);
+    }
+</script>
+</body>
+
+</html>
