@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>大列表数据</title>
+</head>
+
+<body>
+  <ul id="container"></ul>
+  <script>
+    let ul = document.getElementById("container")
+
+    let total = 100000
+
+    let once = 20
+    let page = total / once
+
+    let index = 0;
+
+    function loop(curTotal, curIndex) {
+      if (curTotal <= 0) {
+        return false
+      }
+      // debugger
+      let pageCount = Math.min(curTotal, once)
+      // console.log(pageCount);
+
+      window.requestAnimationFrame(function () {
+        let fragment = document.createDocumentFragment()
+        for (let i = 0; i < pageCount; i++) {
+          let li = document.createElement("li")
+          li.innerText = curIndex + i + ":" + ~~(Math.random() * total)
+          fragment.appendChild(li)
+        }
+        ul.appendChild(fragment)
+        loop(curTotal - pageCount, curIndex + pageCount)
+      })
+    }
+    loop(total, index)
+  </script>
+</body>
+
+</html>
