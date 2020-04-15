@@ -21,32 +21,39 @@
     /*注意如果此处背景颜色属性用缩写的话，需要放到其他背景属性的前面，否则会覆盖前面的属性值（此处为background-clip）为默认值*/
     background-clip: content-box;
   }
+
   /*双层圆点*/
-.icon2 {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  padding: 2px;
-  border: 2px solid currentColor;
-  border-radius: 50%;
-  background-color: currentColor;
-  background-clip: content-box;
-}
+  .icon2 {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    padding: 2px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    background-color: currentColor;
+    background-clip: content-box;
+  }
 </style>
 
 <body>
-    <div class="box">
-        <div></div>
-      </div>
-      <style>
-        .box{
-          overflow: hidden;
-          background-color: lightblue;
-        }
-        .box > div{
-          margin: 50%;
-        }
-      </style>
+  <div class="test"> </div>
+  <div class="box">
+    <div></div>
+  </div>
+  <style>
+    .box {
+      overflow: hidden;
+      background-color: lightblue;
+    }
+
+    .box>div {
+      margin: 50%;
+    }
+  </style>
+  <div class="icon1">
+    name:{{name}}
+  </div>
+  <!-- <div class=""></div> -->
   <div class="icon1"></div>
   <div class="icon2"></div>
   <p style="display: block"></p>

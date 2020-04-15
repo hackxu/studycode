@@ -3,6 +3,7 @@
         define(function() {
             return factory(root);
         });
+      
     } else if (typeof module === "object" && module.exports) {
         module.exports = factory(root);
     } else {
@@ -14256,4 +14257,4 @@ GroupEffect.prototype.init = function(data,element){
     }
     var readyStateCheckInterval = setInterval(checkReady, 100);
     return lottiejs;
-}));
+}));

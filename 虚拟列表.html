@@ -1,50 +1,70 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="viewport" id="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta content="yes" name="apple-touch-fullscreen"/>
-    <title>虚拟列表</title>
-    <style>
-        .list-view{
-            height: 400px;
-            overflow: auto;
-            position: relative;
-            border: 1px solid #aaa;
-        }
-        .list-view-phantom{
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            z-index: -1;
-        }
-        .list-view-content{
-            left: 0;
-            right: 0;
-            top: 0;
-            position: absolute;
-        }
-        .list-view-item{
-            padding: 5px;
-            color: #666;
-            line-height: 30px;
-            box-sizing: border-box;
-        }
-    </style>
-</head>
-<body>
-<template>
 
-</template>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" id="viewport"
+    content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta content="yes" name="apple-touch-fullscreen" />
+  <title>虚拟列表</title>
+  <style>
+    .list-view {
+      height: 20;
+      overflow: hidden;
+      position: relative;
+      border:1px solid #aaa;
+    }
+    .list-view-phantom{
+      position: absolute;
+    }
+
+    .list-view {
+      height: 400px;
+      overflow: auto;
+      position: relative;
+      border: 1px solid #aaa;
+    }
+
+    .list-view-phantom {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      z-index: -1;
+    }
+    .list-view-phantom{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .list-view-content {
+      left: 0;
+      right: 0;
+      top: 0;
+      position: absolute;
+    }
+
+    .list-view-item {
+      padding: 5px;
+      color: #666;
+      line-height: 30px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <template>
+
+  </template>
 
 </body>
+
 </html>

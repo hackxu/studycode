@@ -7,6 +7,9 @@ const flatten = function (arr) {
   }
   return arr
 }
+
+
+
 console.log(flatten(arr));
 
 const flatten = array => array.reduce((acc, cur) => (Array.isArray(cur) ? [...acc, ...flatten(cur)] : [...acc, cur]), [])

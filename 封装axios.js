@@ -1,5 +1,7 @@
 import axios from 'axios';
-
+function getLocalToken() {
+  const token = window.localStorage.getItem
+}
 function geLocalToken() {
   const token = window.localStorage.getItem("token")
   return token

@@ -5,8 +5,16 @@ module.exports = {
     app: './webpack.config.js'
   },
   output: {
-    path: __dirname,
+    path: __dirname,  
+    filename:"",
     filename: "[name].js",
+  },
+  // output: {
+  //   path
+  // },
+
+  module:{
+
   },
   module: {
     rules: [

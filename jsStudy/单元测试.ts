@@ -6,4 +6,5 @@ describe("#quickSort.ts", () => {
       assert.strictEqual(quickSort([2, 3, 5, 7, 1, 3, 4]), [1, 2, 3, 3, 4, 5, 7])
     })
   })
-})
+})      
+

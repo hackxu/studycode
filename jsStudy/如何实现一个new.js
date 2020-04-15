@@ -32,6 +32,9 @@ var _new = function () {
   return obj
 }
 
+// var _new = function () {
+//   const obj =
+// }
 function __new(fn, ...arg) {
   const obj = Object.create(fn.prototype);
   const ret = fn.apply(obj, arg);

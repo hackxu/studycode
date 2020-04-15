@@ -1,5 +1,17 @@
 "use strict";
+// "use strict"
+var box = document.querySelectorAll(".box")
 
+var observer = new IntersectionObser
+
+ver(function (entries) {
+  entries.forEach(function(item){
+    if(item.isIntersecting){
+      console.log(item.target.dataset.origin);
+      
+    }
+  })  
+})
 // 图片懒加载
 var box = document.querySelectorAll(".box");
 var observer = new IntersectionObserver(function (entries) {
@@ -15,6 +27,14 @@ var observer = new IntersectionObserver(function (entries) {
 
   });
 });
+// var box = document.querySelectorAll(".box");
+// var observer = new IntersectionObserver(function entriies(entries) {
+//   entries.forEach(function (item) {
+//     if (item.isIntersecting) {
+
+//     }
+//   })
+// })
 box.forEach(function (item) {
   return observer.observe(item);
 }); // 触底
@@ -23,6 +43,7 @@ box.forEach(function (item) {
 new IntersectionObserver(function (entries) {
   // console.log(entries);
   var item = entries[0];
+
   if (item.isIntersecting) console.log("滚动到了底部,开始请求数据");
 }).observe(document.querySelector(".reference")); // 吸顶
 
@@ -33,7 +54,7 @@ new IntersectionObserver(function (entries) {
   var item = entries[0];
   var top = item.boundingClientRect.top; // 当参照元素的的top值小于0，也就是在视窗的顶部的时候，开始吸顶，否则移除吸顶
 
-  if (top < 0) nav.classList.add("fixed");else nav.classList.remove("fixed");
+  if (top < 0) nav.classList.add("fixed"); else nav.classList.remove("fixed");
 }).observe(stick); // 动画效果
 
 var uli = document.querySelectorAll("ul li");

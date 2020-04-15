@@ -30,6 +30,14 @@ var inorderTraversal = function (root) {
   return result
 }
 
+// var preorderTraversal = function (root, array = []) {
+//   if (root) {
+//     array.push(root.val)
+//     preorderTraversal(root.left, array)
+//     preorderTraversal(root.right, array)
+//   }
+//   return array
+// }
 // 前序遍历
 // 递归实现
 var preorderTraversal = function (root, array = []) {
@@ -80,6 +88,7 @@ var postorderTraversal = function (root, array = []) {
 // 3.栈顶节点的右节点不为空且未被访问，以右孩子为目标节点，再依次执行1、2、3
 var postorderTraversal = function (root) {
   const result = []
+  // const result = []
   const stack = []
   let last = null; // 标记上一个访问的节点
   let current = root;
@@ -90,13 +99,16 @@ var postorderTraversal = function (root) {
     }
     current = stack[stack.length - 1]
     if (!current.right || current.right == last) {
+      // current = stack.pop()
       current = stack.pop()
       result.push(current.val)
       last = current
       current = null // 继续弹栈
     } else {
+      // current = current.right
       current = current.right
     }
   }
+  // return result
   return result
 }
