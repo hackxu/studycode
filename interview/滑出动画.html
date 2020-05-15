@@ -1,0 +1,37 @@
+<html>
+<style>
+  #box {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+  }
+</style>
+
+<body>
+  <div id="box"></div>
+  <script>
+    const slideOut = (element, duration) => {
+      const initial = 0
+      const target = window.innerWidth
+      const start = new Date()
+      const loop = () => {
+        const time = (new Date().getTime() - start.getTime()) / 1000
+        const value = (time * target) / duration + initial
+        box.style.transform = `translateX(${value}px)`
+
+        if (value >= target) {
+          box.style.transform = ``
+          return
+        }
+        window.requestAnimationFrame(loop)
+      }
+      window.requestAnimationFrame(loop)
+    }
+    const box = document.getElementById("box")
+    box.addEventListener("click", event => {
+      slideOut(event.target, 1)
+    })
+  </script>
+</body>
+
+</html>
